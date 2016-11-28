@@ -2,14 +2,20 @@
   "name": "parse-pairs",
   "version": "0.0.0",
   "license": "ISC",
-  "description": "Parse key-value pairs",
+  "description": "Parse key-value pairs (like environment variables)",
   "keywords": [
+    "env",
+    "environ",
+    "environment",
     "key",
     "pair",
     "pairs",
     "parse",
     "parser",
-    "value"
+    "value",
+    "var",
+    "variable",
+    "variables"
   ],
   "homepage": "https://github.com/JsCommunity/parse-pairs",
   "bugs": "https://github.com/JsCommunity/parse-pairs/issues",

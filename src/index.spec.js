@@ -23,9 +23,17 @@ it('support double quotes', () => {
   })
 })
 
-it('whitespaces around pairs are ignored', () => {
+it('white spaces around pairs are ignored', () => {
   expect(parsePairs('  key1=value1  key2=value2  ')).toEqual({
     key1: 'value1',
     key2: 'value2'
+  })
+})
+
+it('\\n and \\r are valid white spaces', () => {
+  expect(parsePairs('key1=value1\nkey2=value2\rkey3=value3')).toEqual({
+    key1: 'value1',
+    key2: 'value2',
+    key3: 'value3'
   })
 })

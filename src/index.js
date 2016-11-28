@@ -5,6 +5,11 @@ const isRawStringChar = c =>
   c >= 'A' && c <= 'Z' ||
   c >= 'a' && c <= 'z'
 
+const isWhitespace = c =>
+  c === ' ' ||
+  c === '\n' ||
+  c === '\r'
+
 const parsePairs = input => {
   if (typeof input !== 'string') {
     throw new TypeError('input should be a string')
@@ -58,7 +63,7 @@ const parsePairs = input => {
     throw new Error(`missing string at offset ${i}`)
   }
   const parseWs = () => {
-    while (i < n && input[i] === ' ') {
+    while (i < n && isWhitespace(input[i])) {
       ++i
     }
   }
