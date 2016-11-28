@@ -17,6 +17,8 @@ const parsePairs = input => {
 
   let i = 0
   const n = input.length
+  const pairs = {}
+
   const assert = c => {
     if (!(i < n) && input[i] !== c) {
       throw new Error(`missing character ${c} at offset ${i}`)
@@ -27,9 +29,7 @@ const parsePairs = input => {
   const parsePair = () => {
     const key = parseString()
     assert('=')
-    const value = parseString()
-
-    return { key, value }
+    pairs[key] = parseString()
   }
   const parseString = () => {
     if (i < n) {
@@ -68,12 +68,9 @@ const parsePairs = input => {
     }
   }
 
-  const pairs = {}
-
   parseWs()
   while (i < n) { // eslint-disable-line no-unmodified-loop-condition
-    const pair = parsePair()
-    pairs[pair.key] = pair.value
+    parsePair()
     parseWs()
   }
 
