@@ -10,14 +10,8 @@ const isWhitespace = c =>
   c === '\n' ||
   c === '\r'
 
-const parsePairs = input => {
-  if (typeof input !== 'string') {
-    throw new TypeError('input should be a string')
-  }
-
-  let i = 0
-  const n = input.length
-  const pairs = {}
+const createParser = () => {
+  let i, input, n, pairs
 
   const assert = c => {
     if (!(i < n) && input[i] !== c) {
@@ -68,12 +62,30 @@ const parsePairs = input => {
     }
   }
 
-  parseWs()
-  while (i < n) { // eslint-disable-line no-unmodified-loop-condition
-    parsePair()
-    parseWs()
-  }
+  return input_ => {
+    if (typeof input_ !== 'string') {
+      throw new TypeError('input should be a string')
+    }
 
-  return pairs
+    try {
+      // assign global variables
+      i = 0
+      input = input_
+      n = input.length
+      pairs = {}
+
+      parseWs()
+      while (i < n) { // eslint-disable-line no-unmodified-loop-condition
+        parsePair()
+        parseWs()
+      }
+
+      return pairs
+    } finally {
+      // free global variables
+      input = pairs = null
+    }
+  }
 }
-export { parsePairs as default }
+
+export default createParser()
