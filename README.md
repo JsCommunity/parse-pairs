@@ -27,6 +27,25 @@ parsePairs('Batman="Bruce Wayne" "Wonder Woman"="Diana Prince"')
 - white spaces around pairs are ignored
 - no escape sequences, feel free to open an [issue](https://github.com/JsCommunity/parse-pairs/issues/) or [PR](https://github.com/JsCommunity/parse-pairs/pulls) if necessary
 
+### Custom parser
+
+> For advanced needs, you can create a custom parser.
+
+```js
+import { createParser } from 'parse-pairs'
+
+const parse = createParser({
+  keyTransform: lodash.cameCase,
+  valueTransform: value => lodash.startCase(value.toLowerCase())
+})
+
+parse('BATMAN="BRUCE WAYNE" "WONDER WOMAN"="DIANA PRINCE"')
+{
+  batman: 'Bruce Wayne',
+  wonderWoman: 'Diana Prince'
+}
+```
+
 ## Development
 
 ```

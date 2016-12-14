@@ -1,3 +1,5 @@
+const identity = x => x
+
 const isRawStringChar = c =>
   c === '-' ||
   c === '_' ||
@@ -10,7 +12,10 @@ const isWhitespace = c =>
   c === '\n' ||
   c === '\r'
 
-const createParser = () => {
+export const createParser = ({
+  keyTransform = identity,
+  valueTransform = identity
+} = {}) => {
   let i, input, n, pairs
 
   const assert = c => {
@@ -21,9 +26,9 @@ const createParser = () => {
   }
 
   const parsePair = () => {
-    const key = parseString()
+    const key = keyTransform(parseString())
     assert('=')
-    pairs[key] = parseString()
+    pairs[key] = valueTransform(parseString())
   }
   const parseString = () => {
     if (i < n) {
