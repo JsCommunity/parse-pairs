@@ -36,7 +36,7 @@ import { createParser } from 'parse-pairs'
 
 const parse = createParser({
   keyTransform: lodash.cameCase,
-  valueTransform: value => lodash.startCase(value.toLowerCase())
+  valueTransform: (value, key) => lodash.startCase(value.toLowerCase())
 })
 
 parse('BATMAN="BRUCE WAYNE" "WONDER WOMAN"="DIANA PRINCE"')

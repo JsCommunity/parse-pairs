@@ -28,7 +28,7 @@ export const createParser = ({
   const parsePair = () => {
     const key = keyTransform(parseString())
     assert('=')
-    pairs[key] = valueTransform(parseString())
+    pairs[key] = valueTransform(parseString(), key)
   }
   const parseString = () => {
     if (i < n) {
