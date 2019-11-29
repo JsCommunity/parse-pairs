@@ -58,9 +58,19 @@ export const createParser = ({
 
     throw new Error(`missing string at offset ${i}`);
   };
-  const parseWs = () => {
-    while (i < n && isWhitespace(input[i])) {
-      ++i;
+  const consumeCommentsAndWs = () => {
+    while (i < n) {
+      const c = input[i];
+      if (isWhitespace(c)) {
+        ++i;
+      } else if (c === "#") {
+        ++i;
+
+        // consume all the comment including latest new line
+        while (i < n && input[i++] !== "\n") {}
+      } else {
+        break;
+      }
     }
   };
 
@@ -76,11 +86,11 @@ export const createParser = ({
       n = input.length;
       pairs = {};
 
-      parseWs();
+      consumeCommentsAndWs();
       // eslint-disable-next-line no-unmodified-loop-condition
       while (i < n) {
         parsePair();
-        parseWs();
+        consumeCommentsAndWs();
       }
 
       return pairs;

@@ -35,4 +35,17 @@ export default {
       key3: "value3",
     },
   },
+  "handle single line comments": {
+    string: [
+      "# at the beginining of the string",
+      "key1=value1 # at the end of a line",
+      "# on an empty line",
+      "key2=value2",
+      "# at the end of the string",
+    ].join("\n"),
+    object: {
+      key1: "value1",
+      key2: "value2",
+    },
+  },
 };

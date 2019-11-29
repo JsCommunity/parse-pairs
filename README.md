@@ -17,7 +17,7 @@ Installation of the [npm package](https://npmjs.org/package/parse-pairs):
 ```js
 import parsePairs from "parse-pairs";
 
-parsePairs('Batman="Bruce Wayne" "Wonder Woman"="Diana Prince"');
+parsePairs('Batman="Bruce Wayne" "Wonder Woman"="Diana Prince" # comment');
 // {
 //   Batman: 'Bruce Wayne',
 //   'Wonder Woman': 'Diana Prince'
@@ -28,6 +28,7 @@ parsePairs('Batman="Bruce Wayne" "Wonder Woman"="Diana Prince"');
 - single and double quotes are supported
 - white spaces around pairs are ignored
 - no escape sequences, feel free to open an [issue](https://github.com/JsCommunity/parse-pairs/issues/) or [PR](https://github.com/JsCommunity/parse-pairs/pulls) if necessary
+- single line comments starting with `#` are ignored
 
 ### Custom parser
 
