@@ -5,11 +5,13 @@ import { forEach } from 'lodash'
 import fixtures from './index.fixtures'
 import parsePairs, { createParser } from './'
 
-describe('parsePairs()', () => forEach(fixtures, (data, description) => {
-  it(description, () => {
-    expect(parsePairs(data.string)).toEqual(data.object)
+describe('parsePairs()', () => {
+  forEach(fixtures, (data, description) => {
+    it(description, () => {
+      expect(parsePairs(data.string)).toEqual(data.object)
+    })
   })
-}))
+})
 
 describe('createParser()', () => {
   it('supports key and value transforms', () => {
