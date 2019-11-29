@@ -1,4 +1,4 @@
 module.exports = {
   // this really improves diffs
-  trailingComma: 'es5'
-}
+  trailingComma: "es5",
+};

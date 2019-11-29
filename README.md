@@ -13,9 +13,9 @@ Installation of the [npm package](https://npmjs.org/package/parse-pairs):
 ## Usage
 
 ```js
-import parsePairs from 'parse-pairs'
+import parsePairs from "parse-pairs";
 
-parsePairs('Batman="Bruce Wayne" "Wonder Woman"="Diana Prince"')
+parsePairs('Batman="Bruce Wayne" "Wonder Woman"="Diana Prince"');
 // {
 //   Batman: 'Bruce Wayne',
 //   'Wonder Woman': 'Diana Prince'
@@ -67,7 +67,7 @@ parse('BATMAN="BRUCE WAYNE" "WONDER WOMAN"="DIANA PRINCE"')
 
 ## Contributions
 
-Contributions are *very* welcomed, either on the documentation or on
+Contributions are _very_ welcomed, either on the documentation or on
 the code.
 
 You may:
