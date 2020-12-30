@@ -1,17 +1,19 @@
 const identity = x => x;
 
-const isRawStringChar = c =>
+const defaultIsRawStringChar = c =>
   c === "-" ||
   c === "_" ||
   (c >= "0" && c <= "9") ||
   (c >= "A" && c <= "Z") ||
   (c >= "a" && c <= "z");
 
-const isWhitespace = c => c === " " || c === "\n" || c === "\r";
+const defaultIsWhitespace = c => c === " " || c === "\n" || c === "\r";
 
 export const createParser = ({
   keyTransform = identity,
   valueTransform = identity,
+  isRawStringChar = defaultIsRawStringChar, // Unstable property - See #11
+  isWhitespace = defaultIsWhitespace, // Unstable property - See #11
 } = {}) => {
   let i, input, n, pairs;
 

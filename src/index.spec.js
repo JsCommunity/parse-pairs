@@ -27,4 +27,37 @@ describe("createParser()", () => {
       AGE: 68,
     });
   });
+
+  it("supports custom characters as non-delimiters", () => {
+    const parse = createParser({
+      isRawStringChar: c =>
+        c === "!" ||
+        (c >= "0" && c <= "9") ||
+        (c >= "A" && c <= "Z") ||
+        (c >= "a" && c <= "z"),
+    });
+
+    expect(parse("key:!value")).toEqual({
+      key: "!value",
+    });
+
+    expect(parse("key!:value")).toEqual({
+      "key!": "value",
+    });
+
+    expect(parse("key_value")).toEqual({
+      key: "value",
+    });
+  });
+
+  it("supports custom whitespace characters", () => {
+    const parse = createParser({
+      isWhitespace: c => c === "%",
+    });
+
+    expect(parse("%KEY1=value1%KEY2=value2%")).toEqual({
+      KEY1: "value1",
+      KEY2: "value2",
+    });
+  });
 });
