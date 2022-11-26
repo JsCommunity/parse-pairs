@@ -3,7 +3,7 @@
 const forEach = require("lodash/forEach");
 
 const fixtures = require("./index.fixtures");
-const { default: createParser, parsePairs } = require("./");
+const { createParser, parsePairs } = require("./");
 
 describe("parsePairs()", () => {
   forEach(fixtures, (data, description) => {

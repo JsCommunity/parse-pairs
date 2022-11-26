@@ -102,6 +102,6 @@ function createParser({
     }
   };
 }
-exports.default = createParser;
+exports.createParser = createParser;
 
 exports.parsePairs = createParser();

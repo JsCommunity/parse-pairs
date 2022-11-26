@@ -15,7 +15,7 @@ Installation of the [npm package](https://npmjs.org/package/parse-pairs):
 ## Usage
 
 ```js
-import parsePairs from "parse-pairs";
+import { parsePairs } from "parse-pairs";
 
 parsePairs('Batman="Bruce Wayne" "Wonder Woman"="Diana Prince" # comment');
 // {
