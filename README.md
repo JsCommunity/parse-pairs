@@ -1,6 +1,6 @@
 # parse-pairs
 
-[![Package Version](https://badgen.net/npm/v/parse-pairs)](https://npmjs.org/package/parse-pairs) [![Build Status](https://travis-ci.org/JsCommunity/parse-pairs.png?branch=master)](https://travis-ci.org/JsCommunity/parse-pairs) [![PackagePhobia](https://badgen.net/packagephobia/install/parse-pairs)](https://packagephobia.now.sh/result?p=parse-pairs) [![Latest Commit](https://badgen.net/github/last-commit/JsCommunity/parse-pairs)](https://github.com/JsCommunity/parse-pairs/commits/master)
+[![Package Version](https://badgen.net/npm/v/parse-pairs)](https://npmjs.org/package/parse-pairs) ![License](https://badgen.net/npm/license/parse-pairs) [![PackagePhobia](https://badgen.net/bundlephobia/minzip/parse-pairs)](https://bundlephobia.com/result?p=parse-pairs) [![Node compatibility](https://badgen.net/npm/node/parse-pairs)](https://npmjs.org/package/parse-pairs)
 
 > Parse key-value pairs
 
