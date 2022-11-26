@@ -1,5 +1,7 @@
-/* eslint-env jest */
+"use strict";
 
+const assert = require("assert");
+const { describe, it } = require("test");
 const forEach = require("lodash/forEach");
 
 const fixtures = require("./index.fixtures");
@@ -8,7 +10,7 @@ const { createParser, parsePairs } = require("./");
 describe("parsePairs()", () => {
   forEach(fixtures, (data, description) => {
     it(description, () => {
-      expect(parsePairs(data.string)).toEqual(data.object);
+      assert.deepStrictEqual(parsePairs(data.string), data.object);
     });
   });
 });
@@ -16,12 +18,12 @@ describe("parsePairs()", () => {
 describe("createParser()", () => {
   it("supports key and value transforms", () => {
     const parse = createParser({
-      keyTransform: key => key.toUpperCase(),
+      keyTransform: (key) => key.toUpperCase(),
       valueTransform: (value, key) =>
         key === "AGE" ? +value : value.toLowerCase(),
     });
 
-    expect(parse("kEY1=valUE1 KEY2=ValUe2 AGe=68")).toEqual({
+    assert.deepStrictEqual(parse("kEY1=valUE1 KEY2=ValUe2 AGe=68"), {
       KEY1: "value1",
       KEY2: "value2",
       AGE: 68,
@@ -30,32 +32,32 @@ describe("createParser()", () => {
 
   it("supports custom characters as non-delimiters", () => {
     const parse = createParser({
-      isRawStringChar: c =>
+      isRawStringChar: (c) =>
         c === "!" ||
         (c >= "0" && c <= "9") ||
         (c >= "A" && c <= "Z") ||
         (c >= "a" && c <= "z"),
     });
 
-    expect(parse("key:!value")).toEqual({
+    assert.deepStrictEqual(parse("key:!value"), {
       key: "!value",
     });
 
-    expect(parse("key!:value")).toEqual({
+    assert.deepStrictEqual(parse("key!:value"), {
       "key!": "value",
     });
 
-    expect(parse("key_value")).toEqual({
+    assert.deepStrictEqual(parse("key_value"), {
       key: "value",
     });
   });
 
   it("supports custom whitespace characters", () => {
     const parse = createParser({
-      isWhitespace: c => c === "%",
+      isWhitespace: (c) => c === "%",
     });
 
-    expect(parse("%KEY1=value1%KEY2=value2%")).toEqual({
+    assert.deepStrictEqual(parse("%KEY1=value1%KEY2=value2%"), {
       KEY1: "value1",
       KEY2: "value2",
     });

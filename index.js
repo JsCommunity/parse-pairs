@@ -1,13 +1,15 @@
-const identity = x => x;
+"use strict";
 
-const defaultIsRawStringChar = c =>
+const identity = (x) => x;
+
+const defaultIsRawStringChar = (c) =>
   c === "-" ||
   c === "_" ||
   (c >= "0" && c <= "9") ||
   (c >= "A" && c <= "Z") ||
   (c >= "a" && c <= "z");
 
-const defaultIsWhitespace = c => c === " " || c === "\n" || c === "\r";
+const defaultIsWhitespace = (c) => c === " " || c === "\n" || c === "\r";
 
 function createParser({
   keyTransform = identity,
@@ -17,7 +19,7 @@ function createParser({
 } = {}) {
   let i, input, n, pairs;
 
-  const assert = c => {
+  const assert = (c) => {
     if (!(i < n) && input[i] !== c) {
       throw new Error(`missing character ${c} at offset ${i}`);
     }
@@ -69,6 +71,7 @@ function createParser({
         ++i;
 
         // consume all the comment including latest new line
+        // eslint-disable-next-line no-empty
         while (i < n && input[i++] !== "\n") {}
       } else {
         break;
