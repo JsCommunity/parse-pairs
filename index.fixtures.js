@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   "parse key=value pairs in a string": {
     string: "key1=value1 key2=value2",
     object: {

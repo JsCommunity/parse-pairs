@@ -9,12 +9,12 @@ const defaultIsRawStringChar = c =>
 
 const defaultIsWhitespace = c => c === " " || c === "\n" || c === "\r";
 
-export const createParser = ({
+function createParser({
   keyTransform = identity,
   valueTransform = identity,
   isRawStringChar = defaultIsRawStringChar, // Unstable property - See #11
   isWhitespace = defaultIsWhitespace, // Unstable property - See #11
-} = {}) => {
+} = {}) {
   let i, input, n, pairs;
 
   const assert = c => {
@@ -76,7 +76,7 @@ export const createParser = ({
     }
   };
 
-  return input_ => {
+  return function parsePairs(input_) {
     if (typeof input_ !== "string") {
       throw new TypeError("input should be a string");
     }
@@ -101,6 +101,7 @@ export const createParser = ({
       input = pairs = null;
     }
   };
-};
+}
+exports.default = createParser;
 
-export default createParser();
+exports.parsePairs = createParser();

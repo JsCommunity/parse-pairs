@@ -1,9 +1,9 @@
 /* eslint-env jest */
 
-import { forEach } from "lodash";
+const forEach = require("lodash/forEach");
 
-import fixtures from "./index.fixtures";
-import parsePairs, { createParser } from "./";
+const fixtures = require("./index.fixtures");
+const { default: createParser, parsePairs } = require("./");
 
 describe("parsePairs()", () => {
   forEach(fixtures, (data, description) => {
